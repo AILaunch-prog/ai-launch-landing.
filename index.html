@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Launch - Coming Soon</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body {
+            background-color: #000; color: #00ff99; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 100vh; text-align: center; overflow-x: hidden; animation: pulseBg 10s infinite alternate;
+        }
+        @keyframes pulseBg { 0% { background-color: #000000; } 50% { background-color: #001a0a; } 100% { background-color: #000000; } }
+        img.logo { width: 200px; margin-bottom: 40px; filter: drop-shadow(0 0 15px #00ff99) drop-shadow(0 0 25px #00ff99); animation: glow 2s infinite alternate; }
+        @keyframes glow { 0% { filter: drop-shadow(0 0 15px #00ff99) drop-shadow(0 0 25px #00ff99); } 50% { filter: drop-shadow(0 0 20px #00fff7) drop-shadow(0 0 35px #00fff7); } 100% { filter: drop-shadow(0 0 15px #00ff99) drop-shadow(0 0 25px #00ff99); } }
+        h1 { font-size: 3rem; text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99; margin-bottom: 20px; animation: neonText 1.5s infinite alternate; }
+        @keyframes neonText { 0% { text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99; } 50% { text-shadow: 0 0 15px #00fff7, 0 0 30px #00fff7; } 100% { text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99; } }
+        p { font-size: 1.2rem; margin-bottom: 40px; }
+        .countdown { display: flex; gap: 20px; font-size: 2rem; margin-bottom: 40px; }
+        .countdown div { background: rgba(0, 255, 153, 0.1); padding: 20px; border-radius: 10px; min-width: 80px; animation: pulseBox 1s infinite alternate; }
+        @keyframes pulseBox { 0% { box-shadow: 0 0 5px #00ff99; } 50% { box-shadow: 0 0 20px #00fff7; } 100% { box-shadow: 0 0 5px #00ff99; } }
+        .countdown div span { display: block; font-size: 1.2rem; margin-top: 5px; color: #00fff7; }
+        a.social { text-decoration: none; color: #00ff99; font-weight: bold; font-size: 1.2rem; transition: color 0.3s; margin-bottom: 20px; }
+        a.social:hover { color: #00fff7; }
+        .subscribe-form { display: flex; flex-direction: column; gap: 15px; align-items: center; margin-bottom: 40px; }
+        .subscribe-form input[type="email"] { padding: 10px 15px; font-size: 1rem; border: none; border-radius: 5px; outline: none; }
+        .subscribe-form button { padding: 10px 20px; font-size: 1rem; border: none; border-radius: 5px; background-color: #00ff99; color: #000; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .subscribe-form button:hover { background-color: #00fff7; transform: scale(1.05); }
+        footer { position: absolute; bottom: 20px; font-size: 0.9rem; color: #00ff99; }
+        @media(max-width:600px){ h1{ font-size:2rem; } .countdown{ flex-direction: column; gap:10px; } }
+    </style>
+</head>
+<body>
+
+```
+<img src="9268a43a-9a9e-4dad-902f-ca57a8d54774.png" alt="AI Launch Logo" class="logo">
+<h1>AI Launch</h1>
+<p>Get ready for the launch of our new coin! 🚀</p>
+
+<div class="countdown">
+    <div><span id="days">0</span>Days</div>
+    <div><span id="hours">0</span>Hours</div>
+    <div><span id="minutes">0</span>Minutes</div>
+    <div><span id="seconds">0</span>Seconds</div>
+</div>
+
+<form class="subscribe-form">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">Notify Me!</button>
+</form>
+
+<a href="https://x.com/AILaunchAI" target="_blank" class="social">Follow us on X</a>
+<footer>#Solana #MemeCoin</footer>
+
+<script>
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 3);
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    function updateCountdown() {
+        const now = new Date();
+        const diff = launchDate - now;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        daysEl.textContent = days;
+        hoursEl.textContent = hours;
+        minutesEl.textContent = minutes;
+        secondsEl.textContent = seconds;
+        if(diff <= 0){ clearInterval(timer); daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = 0; alert('🚀 The AI Coin has launched!'); }
+    }
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    const form = document.querySelector('.subscribe-form');
+    form.addEventListener('submit', e => { e.preventDefault(); const email = form.querySelector('input').value; alert(`Thanks! We'll notify ${email} when we launch.`); form.reset(); });
+</script>
+```
+
+</body>
+</html>
